@@ -79,6 +79,126 @@
       "basedOnAlertId": "WZ-0011",
       "createdAt": "2026-10-11T10:44:49.132Z",
       "expiresAt": "2026-10-12T10:44:49.132Z"
+    },
+    {
+      "id": "deny-WZ-0003",
+      "srcAddr": "203.0.113.17",
+      "reason": "sqli-select-from",
+      "basedOnAlertId": "WZ-0003",
+      "createdAt": "2026-10-11T10:50:53.010Z",
+      "expiresAt": "2026-10-12T10:50:53.010Z"
+    },
+    {
+      "id": "deny-WZ-0004",
+      "srcAddr": "203.0.113.17",
+      "reason": "sqli-tautology",
+      "basedOnAlertId": "WZ-0004",
+      "createdAt": "2026-10-11T10:50:53.012Z",
+      "expiresAt": "2026-10-12T10:50:53.012Z"
+    },
+    {
+      "id": "deny-WZ-0005",
+      "srcAddr": "203.0.113.18",
+      "reason": "xss-script-tag",
+      "basedOnAlertId": "WZ-0005",
+      "createdAt": "2026-10-11T10:50:53.013Z",
+      "expiresAt": "2026-10-12T10:50:53.013Z"
+    },
+    {
+      "id": "deny-WZ-0006",
+      "srcAddr": "203.0.113.18",
+      "reason": "path-traversal-repeated",
+      "basedOnAlertId": "WZ-0006",
+      "createdAt": "2026-10-11T10:50:53.014Z",
+      "expiresAt": "2026-10-12T10:50:53.014Z"
+    },
+    {
+      "id": "deny-WZ-0011",
+      "srcAddr": "198.51.100.23",
+      "reason": "sqli-destructive",
+      "basedOnAlertId": "WZ-0011",
+      "createdAt": "2026-10-11T10:50:53.015Z",
+      "expiresAt": "2026-10-12T10:50:53.015Z"
+    },
+    {
+      "id": "deny-WZ-0003",
+      "srcAddr": "203.0.113.17",
+      "reason": "sqli-select-from+sqli-union-comment-bypass",
+      "basedOnAlertId": "WZ-0003",
+      "createdAt": "2026-10-11T10:59:00.570Z",
+      "expiresAt": "2026-10-12T10:59:00.570Z"
+    },
+    {
+      "id": "deny-WZ-0004",
+      "srcAddr": "203.0.113.17",
+      "reason": "sqli-tautology+sqli-quote-tautology",
+      "basedOnAlertId": "WZ-0004",
+      "createdAt": "2026-10-11T10:59:00.572Z",
+      "expiresAt": "2026-10-12T10:59:00.572Z"
+    },
+    {
+      "id": "deny-WZ-0005",
+      "srcAddr": "203.0.113.18",
+      "reason": "xss-script-tag",
+      "basedOnAlertId": "WZ-0005",
+      "createdAt": "2026-10-11T10:59:00.573Z",
+      "expiresAt": "2026-10-12T10:59:00.573Z"
+    },
+    {
+      "id": "deny-WZ-0006",
+      "srcAddr": "203.0.113.18",
+      "reason": "path-traversal-repeated",
+      "basedOnAlertId": "WZ-0006",
+      "createdAt": "2026-10-11T10:59:00.574Z",
+      "expiresAt": "2026-10-12T10:59:00.574Z"
+    },
+    {
+      "id": "deny-WZ-0011",
+      "srcAddr": "198.51.100.23",
+      "reason": "sqli-destructive",
+      "basedOnAlertId": "WZ-0011",
+      "createdAt": "2026-10-11T10:59:00.576Z",
+      "expiresAt": "2026-10-12T10:59:00.576Z"
+    },
+    {
+      "id": "deny-WZ-0003",
+      "srcAddr": "203.0.113.17",
+      "reason": "sqli-select-from+sqli-union-comment-bypass",
+      "basedOnAlertId": "WZ-0003",
+      "createdAt": "2026-10-11T11:00:04.143Z",
+      "expiresAt": "2026-10-12T11:00:04.143Z"
+    },
+    {
+      "id": "deny-WZ-0004",
+      "srcAddr": "203.0.113.17",
+      "reason": "sqli-tautology+sqli-quote-tautology",
+      "basedOnAlertId": "WZ-0004",
+      "createdAt": "2026-10-11T11:00:04.146Z",
+      "expiresAt": "2026-10-12T11:00:04.146Z"
+    },
+    {
+      "id": "deny-WZ-0005",
+      "srcAddr": "203.0.113.18",
+      "reason": "xss-script-tag",
+      "basedOnAlertId": "WZ-0005",
+      "createdAt": "2026-10-11T11:00:04.147Z",
+      "expiresAt": "2026-10-12T11:00:04.147Z"
+    },
+    {
+      "id": "deny-WZ-0006",
+      "srcAddr": "203.0.113.18",
+      "reason": "path-traversal-repeated",
+      "basedOnAlertId": "WZ-0006",
+      "createdAt": "2026-10-11T11:00:04.148Z",
+      "expiresAt": "2026-10-12T11:00:04.148Z"
+    },
+    {
+      "id": "deny-WZ-0011",
+      "srcAddr": "198.51.100.23",
+      "reason": "sqli-destructive",
+      "basedOnAlertId": "WZ-0011",
+      "createdAt": "2026-10-11T11:00:04.149Z",
+      "expiresAt": "2026-10-12T11:00:04.149Z"
     }
   ]
 }

@@ -39,6 +39,33 @@
       "basis": "단독으로는 자연어 숫자 비교(수학 설명 등)와 구분이 어려워 신뢰도를 낮게 두되, 사람이 확인하도록 alert로 남김"
     },
     {
+      "id": "sqli-comment-bypass",
+      "name": "따옴표 뒤 주석 처리 우회 (admin'-- 류)",
+      "category": "sql-injection",
+      "weight": 0.85,
+      "pattern": "'\\s*(--|#)",
+      "flags": "",
+      "basis": "따옴표로 쿼리를 깬 뒤 뒤쪽 조건을 주석으로 날려버리는 전형적 로그인 우회 기법 (OWASP Injection)"
+    },
+    {
+      "id": "sqli-quote-tautology",
+      "name": "따옴표만으로 된 항진명제 (' OR ''=' 류)",
+      "category": "sql-injection",
+      "weight": 0.85,
+      "pattern": "'\\s*=\\s*'",
+      "flags": "",
+      "basis": "SQLMap/Havij 등 자동화 툴이 흔히 쓰는 교과서적 로그인 우회 서명. 숫자 없이 빈 문자열끼리 비교해도 항상 참이 됨"
+    },
+    {
+      "id": "sqli-union-comment-bypass",
+      "name": "UNION/**/SELECT 류 주석 삽입 키워드 분리",
+      "category": "sql-injection",
+      "weight": 0.85,
+      "pattern": "union\\s*(?:/\\*[\\s\\S]*?\\*/\\s*)?select",
+      "flags": "i",
+      "basis": "공백 필터를 피하려고 SQL 키워드 사이에 주석을 끼워 넣는 WAF 우회 기법 (OWASP Injection Evasion)"
+    },
+    {
       "id": "xss-script-tag",
       "name": "<script> 태그 삽입",
       "category": "xss",
@@ -49,12 +76,12 @@
     },
     {
       "id": "xss-event-handler",
-      "name": "인라인 이벤트 핸들러 삽입 (onerror=/onload= 등)",
+      "name": "인라인 이벤트 핸들러 삽입 (on* = 전반)",
       "category": "xss",
       "weight": 0.85,
-      "pattern": "\\bon(error|load|click|mouseover)\\s*=",
+      "pattern": "\\bon\\w{2,20}\\s*=",
       "flags": "i",
-      "basis": "태그 필터를 우회하는 대표적 XSS 변형 기법"
+      "basis": "태그 필터를 우회하는 대표적 XSS 변형 기법. onerror/onload 외에 onfocus/onmouseenter 등 임의 이벤트명을 쓰는 변형도 잡도록 일반화. 따옴표 없는 속성값(onerror=alert(1))도 흔해 따옴표 요구 조건은 넣지 않음"
     },
     {
       "id": "xss-js-uri",
@@ -66,13 +93,22 @@
       "basis": "href/src 속성을 통한 스크립트 실행 우회 기법"
     },
     {
+      "id": "xss-encoded-script-tag",
+      "name": "URL 인코딩된 <script (%3Cscript)",
+      "category": "xss",
+      "weight": 0.85,
+      "pattern": "%3c\\s*script",
+      "flags": "i",
+      "basis": "평문 태그 필터를 우회하려고 꺾쇠를 URL 인코딩하는 기법 (OWASP XSS Filter Evasion Cheat Sheet)"
+    },
+    {
       "id": "path-traversal-repeated",
-      "name": "../ 3회 이상 반복",
+      "name": "../ 3회 이상 반복 (슬래시/역슬래시/인코딩 포함)",
       "category": "path-traversal",
       "weight": 0.85,
-      "pattern": "(\\.\\./){3,}|(\\.\\.%2f){3,}",
+      "pattern": "(\\.\\.[\\\\/]){3,}|(?:%2e%2e(?:%2f|%5c)){3,}",
       "flags": "i",
-      "basis": "단발성 상대경로(../images/..)는 정상 웹에서도 흔하지만, 3회 이상 반복은 상위 디렉터리 전체를 거슬러 올라가려는 명백한 시도"
+      "basis": "단발성 상대경로(../images/..)는 정상 웹에서도 흔하지만, 3회 이상 반복은 상위 디렉터리 전체를 거슬러 올라가려는 명백한 시도. 유닉스(/)·윈도우(\\)·URL 인코딩 변형을 모두 포함"
     }
   ]
 }

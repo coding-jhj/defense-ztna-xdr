@@ -3,10 +3,14 @@ const PATTERNS = [
   { id: 'sqli-tautology', weight: 0.9, re: /\bor\b\s*['"]?\s*\d+\s*['"]?\s*=\s*['"]?\s*\d+/i },
   { id: 'sqli-destructive', weight: 0.9, re: /;\s*(drop|delete|update|insert)\b/i },
   { id: 'sqli-weak-numeric-tautology', weight: 0.6, re: /\b(\d+)\s*=\s*\1\b/ },
+  { id: 'sqli-comment-bypass', weight: 0.85, re: /'\s*(--|#)/ },
+  { id: 'sqli-quote-tautology', weight: 0.85, re: /'\s*=\s*'/ },
+  { id: 'sqli-union-comment-bypass', weight: 0.85, re: /union\s*(?:\/\*[\s\S]*?\*\/\s*)?select/i },
   { id: 'xss-script-tag', weight: 0.9, re: /<\s*script\b/i },
-  { id: 'xss-event-handler', weight: 0.85, re: /\bon(error|load|click|mouseover)\s*=/i },
+  { id: 'xss-event-handler', weight: 0.85, re: /\bon\w{2,20}\s*=/i },
   { id: 'xss-js-uri', weight: 0.8, re: /javascript:\s*\S/i },
-  { id: 'path-traversal-repeated', weight: 0.85, re: /(\.\.\/){3,}|(\.\.%2f){3,}/i },
+  { id: 'xss-encoded-script-tag', weight: 0.85, re: /%3c\s*script/i },
+  { id: 'path-traversal-repeated', weight: 0.85, re: /(\.\.[\\/]){3,}|(?:%2e%2e(?:%2f|%5c)){3,}/i },
 ];
 
 export function decide(alert) {

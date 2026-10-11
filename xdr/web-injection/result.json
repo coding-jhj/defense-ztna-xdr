@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-11T10:44:49.133Z",
+  "generatedAt": "2026-10-11T11:00:04.151Z",
   "module": "web-injection",
   "totalAlerts": 11,
   "counts": {
@@ -26,15 +26,15 @@
       "alertId": "WZ-0003",
       "srcAddr": "203.0.113.17",
       "action": "block",
-      "confidence": 0.85,
-      "reason": "sqli-select-from"
+      "confidence": 0.9,
+      "reason": "sqli-select-from+sqli-union-comment-bypass"
     },
     {
       "alertId": "WZ-0004",
       "srcAddr": "203.0.113.17",
       "action": "block",
-      "confidence": 0.9,
-      "reason": "sqli-tautology"
+      "confidence": 0.95,
+      "reason": "sqli-tautology+sqli-quote-tautology"
     },
     {
       "alertId": "WZ-0005",
