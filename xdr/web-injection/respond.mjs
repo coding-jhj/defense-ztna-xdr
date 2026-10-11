@@ -29,3 +29,5 @@ export async function respond(alert, decision) {
     await appendFile(ALERTS_LOG_PATH, line);
   }
 }
+
+export default respond;

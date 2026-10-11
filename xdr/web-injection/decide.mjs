@@ -45,3 +45,5 @@ export function decide(alert) {
     reason: matches.map((m) => m.id).join('+'),
   };
 }
+
+export default decide;

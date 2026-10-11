@@ -19,3 +19,5 @@ export async function readAlerts(fixturePath) {
     description: redactSecrets(String(alert?.rule?.description ?? '')),
   }));
 }
+
+export default readAlerts;
