@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>defense-ztna-xdr — 웹 주입 탐지 리포트</title>
+<style>
+  :root {
+    --bg: #0b0f14;
+    --panel: #121922;
+    --border: #1f2a37;
+    --text: #e6edf3;
+    --muted: #8b98a5;
+    --accent: #4fd1c5;
+    --block: #f87171;
+    --alert: #fbbf24;
+    --record: #4ade80;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
+    line-height: 1.6;
+  }
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 32px 16px 64px;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: 4px; }
+  .subtitle { color: var(--muted); margin-top: 0; margin-bottom: 28px; }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .counts { display: flex; gap: 12px; flex-wrap: wrap; }
+  .count-tile {
+    flex: 1 1 140px;
+    border-radius: 8px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+  }
+  .count-tile .num { font-size: 1.8rem; font-weight: 700; }
+  .count-tile .label { color: var(--muted); font-size: 0.85rem; }
+  .count-tile.block { border-color: var(--block); }
+  .count-tile.alert { border-color: var(--alert); }
+  .count-tile.record { border-color: var(--record); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; }
+  code {
+    background: #0e151c;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
+  a { color: var(--accent); }
+  .basis { color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>defense-ztna-xdr — 웹 주입 탐지 리포트</h1>
+  <p class="subtitle">
+    MITRE ATT&amp;CK T1190 / CISA AA23-158A(MOVEit, CVE-2023-34362) 기반 SQL 인젝션·XSS·경로조작 탐지 모듈
+  </p>
+
+  <div class="card">
+    <h2 style="margin-top:0">고정 테스트 데이터 11건 실행 결과</h2>
+    <div class="counts">
+      <div class="count-tile block">
+        <div class="num">5</div>
+        <div class="label">block (차단)</div>
+      </div>
+      <div class="count-tile alert">
+        <div class="num">1</div>
+        <div class="label">alert (의심, 사람 확인)</div>
+      </div>
+      <div class="count-tile record">
+        <div class="num">5</div>
+        <div class="label">record (정상)</div>
+      </div>
+    </div>
+    <p class="basis">정상 이벤트 5건 중 block으로 오탐된 사례 0건.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0">탐지 패턴</h2>
+    <table>
+      <thead>
+        <tr><th>패턴</th><th>분류</th><th>가중치</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>SQL SELECT...FROM 구조</td><td>sql-injection</td><td>0.85</td></tr>
+        <tr><td>SQL 항진명제 (OR '1'='1' 류)</td><td>sql-injection</td><td>0.9</td></tr>
+        <tr><td>SQL 파괴적 구문 (DROP/DELETE/UPDATE/INSERT)</td><td>sql-injection</td><td>0.9</td></tr>
+        <tr><td>따옴표 없는 숫자 항진명제 (1=1 류)</td><td>sql-injection</td><td>0.6</td></tr>
+        <tr><td>&lt;script&gt; 태그 삽입</td><td>xss</td><td>0.9</td></tr>
+        <tr><td>인라인 이벤트 핸들러 (onerror=/onload= 등)</td><td>xss</td><td>0.85</td></tr>
+        <tr><td>javascript: URI 스킴</td><td>xss</td><td>0.8</td></tr>
+        <tr><td>../ 3회 이상 반복</td><td>path-traversal</td><td>0.85</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0">참고 자료</h2>
+    <p>
+      소스 코드: <a href="https://github.com/coding-jhj/defense-ztna-xdr" target="_blank" rel="noopener">github.com/coding-jhj/defense-ztna-xdr</a>
+    </p>
+    <p class="basis">
+      CISA <a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-158a" target="_blank" rel="noopener">AA23-158A</a> ·
+      MITRE ATT&amp;CK <a href="https://attack.mitre.org/techniques/T1190/" target="_blank" rel="noopener">T1190</a>
+    </p>
+  </div>
+</main>
+</body>
+</html>
