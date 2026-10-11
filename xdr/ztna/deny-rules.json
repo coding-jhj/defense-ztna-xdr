@@ -199,6 +199,86 @@
       "basedOnAlertId": "WZ-0011",
       "createdAt": "2026-10-11T11:00:04.149Z",
       "expiresAt": "2026-10-12T11:00:04.149Z"
+    },
+    {
+      "id": "deny-WZ-0003",
+      "srcAddr": "203.0.113.17",
+      "reason": "sqli-select-from+sqli-union-comment-bypass",
+      "basedOnAlertId": "WZ-0003",
+      "createdAt": "2026-10-11T11:01:29.721Z",
+      "expiresAt": "2026-10-12T11:01:29.721Z"
+    },
+    {
+      "id": "deny-WZ-0004",
+      "srcAddr": "203.0.113.17",
+      "reason": "sqli-tautology+sqli-quote-tautology",
+      "basedOnAlertId": "WZ-0004",
+      "createdAt": "2026-10-11T11:01:29.723Z",
+      "expiresAt": "2026-10-12T11:01:29.723Z"
+    },
+    {
+      "id": "deny-WZ-0005",
+      "srcAddr": "203.0.113.18",
+      "reason": "xss-script-tag",
+      "basedOnAlertId": "WZ-0005",
+      "createdAt": "2026-10-11T11:01:29.724Z",
+      "expiresAt": "2026-10-12T11:01:29.724Z"
+    },
+    {
+      "id": "deny-WZ-0006",
+      "srcAddr": "203.0.113.18",
+      "reason": "path-traversal-repeated",
+      "basedOnAlertId": "WZ-0006",
+      "createdAt": "2026-10-11T11:01:29.725Z",
+      "expiresAt": "2026-10-12T11:01:29.725Z"
+    },
+    {
+      "id": "deny-WZ-0011",
+      "srcAddr": "198.51.100.23",
+      "reason": "sqli-destructive",
+      "basedOnAlertId": "WZ-0011",
+      "createdAt": "2026-10-11T11:01:29.727Z",
+      "expiresAt": "2026-10-12T11:01:29.727Z"
+    },
+    {
+      "id": "deny-WZ-0003",
+      "srcAddr": "203.0.113.17",
+      "reason": "sqli-select-from+sqli-union-comment-bypass",
+      "basedOnAlertId": "WZ-0003",
+      "createdAt": "2026-10-11T11:14:14.120Z",
+      "expiresAt": "2026-10-12T11:14:14.120Z"
+    },
+    {
+      "id": "deny-WZ-0004",
+      "srcAddr": "203.0.113.17",
+      "reason": "sqli-tautology+sqli-quote-tautology",
+      "basedOnAlertId": "WZ-0004",
+      "createdAt": "2026-10-11T11:14:14.122Z",
+      "expiresAt": "2026-10-12T11:14:14.122Z"
+    },
+    {
+      "id": "deny-WZ-0005",
+      "srcAddr": "203.0.113.18",
+      "reason": "xss-script-tag",
+      "basedOnAlertId": "WZ-0005",
+      "createdAt": "2026-10-11T11:14:14.123Z",
+      "expiresAt": "2026-10-12T11:14:14.123Z"
+    },
+    {
+      "id": "deny-WZ-0006",
+      "srcAddr": "203.0.113.18",
+      "reason": "path-traversal-repeated",
+      "basedOnAlertId": "WZ-0006",
+      "createdAt": "2026-10-11T11:14:14.124Z",
+      "expiresAt": "2026-10-12T11:14:14.124Z"
+    },
+    {
+      "id": "deny-WZ-0011",
+      "srcAddr": "198.51.100.23",
+      "reason": "sqli-destructive",
+      "basedOnAlertId": "WZ-0011",
+      "createdAt": "2026-10-11T11:14:14.125Z",
+      "expiresAt": "2026-10-12T11:14:14.125Z"
     }
   ]
 }

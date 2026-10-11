@@ -14,7 +14,16 @@ const PATTERNS = [
 ];
 
 export function decide(alert) {
-  const text = String(alert?.description ?? '');
+  const text = String(
+    alert?.description ??
+      alert?.rule?.description ??
+      alert?.desc ??
+      alert?.message ??
+      alert?.msg ??
+      alert?.summary ??
+      alert?.log ??
+      ''
+  );
   const matches = PATTERNS.filter((p) => p.re.test(text));
 
   if (matches.length === 0) {
