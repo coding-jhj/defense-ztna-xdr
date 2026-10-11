@@ -14,16 +14,26 @@ const PATTERNS = [
 ];
 
 export function decide(alert) {
-  const text = String(
-    alert?.description ??
-      alert?.rule?.description ??
-      alert?.desc ??
-      alert?.message ??
-      alert?.msg ??
-      alert?.summary ??
-      alert?.log ??
-      ''
-  );
+  const text =
+    typeof alert === 'string'
+      ? alert
+      : String(
+          alert?.description ??
+            alert?.rule?.description ??
+            alert?.desc ??
+            alert?.message ??
+            alert?.msg ??
+            alert?.summary ??
+            alert?.log ??
+            alert?.url ??
+            alert?.request ??
+            alert?.query ??
+            alert?.body ??
+            alert?.text ??
+            alert?.raw ??
+            alert?.line ??
+            ''
+        );
   const matches = PATTERNS.filter((p) => p.re.test(text));
 
   if (matches.length === 0) {

@@ -319,6 +319,46 @@
       "basedOnAlertId": "WZ-0011",
       "createdAt": "2026-10-11T11:19:14.720Z",
       "expiresAt": "2026-10-12T11:19:14.720Z"
+    },
+    {
+      "id": "deny-WZ-0003",
+      "srcAddr": "203.0.113.17",
+      "reason": "sqli-select-from+sqli-union-comment-bypass",
+      "basedOnAlertId": "WZ-0003",
+      "createdAt": "2026-10-11T11:26:15.097Z",
+      "expiresAt": "2026-10-12T11:26:15.097Z"
+    },
+    {
+      "id": "deny-WZ-0004",
+      "srcAddr": "203.0.113.17",
+      "reason": "sqli-tautology+sqli-quote-tautology",
+      "basedOnAlertId": "WZ-0004",
+      "createdAt": "2026-10-11T11:26:15.098Z",
+      "expiresAt": "2026-10-12T11:26:15.098Z"
+    },
+    {
+      "id": "deny-WZ-0005",
+      "srcAddr": "203.0.113.18",
+      "reason": "xss-script-tag",
+      "basedOnAlertId": "WZ-0005",
+      "createdAt": "2026-10-11T11:26:15.100Z",
+      "expiresAt": "2026-10-12T11:26:15.100Z"
+    },
+    {
+      "id": "deny-WZ-0006",
+      "srcAddr": "203.0.113.18",
+      "reason": "path-traversal-repeated",
+      "basedOnAlertId": "WZ-0006",
+      "createdAt": "2026-10-11T11:26:15.101Z",
+      "expiresAt": "2026-10-12T11:26:15.101Z"
+    },
+    {
+      "id": "deny-WZ-0011",
+      "srcAddr": "198.51.100.23",
+      "reason": "sqli-destructive",
+      "basedOnAlertId": "WZ-0011",
+      "createdAt": "2026-10-11T11:26:15.102Z",
+      "expiresAt": "2026-10-12T11:26:15.102Z"
     }
   ]
 }
