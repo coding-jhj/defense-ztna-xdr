@@ -1,0 +1,6 @@
+2026-10-11T10:35:13.303Z [BLOCK] alert=WZ-0003 srcAddr=203.0.113.17 confidence=0.85 reason=sqli-select-from
+2026-10-11T10:35:13.305Z [BLOCK] alert=WZ-0004 srcAddr=203.0.113.17 confidence=0.9 reason=sqli-tautology
+2026-10-11T10:35:13.306Z [BLOCK] alert=WZ-0005 srcAddr=203.0.113.18 confidence=0.9 reason=xss-script-tag
+2026-10-11T10:35:13.307Z [BLOCK] alert=WZ-0006 srcAddr=203.0.113.18 confidence=0.85 reason=path-traversal-repeated
+2026-10-11T10:35:13.308Z [ALERT] alert=WZ-0010 srcAddr=10.20.5.21 confidence=0.6 reason=sqli-weak-numeric-tautology
+2026-10-11T10:35:13.309Z [BLOCK] alert=WZ-0011 srcAddr=198.51.100.23 confidence=0.9 reason=sqli-destructive

@@ -1,0 +1,13 @@
+{
+  "name": "defense-ztna-xdr",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "ZTNA 판정기 + 웹 주입 공격 탐지(XDR) 실습 프로젝트",
+  "scripts": {
+    "xdr:run": "node xdr/run.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

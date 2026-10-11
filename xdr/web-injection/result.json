@@ -1,0 +1,89 @@
+{
+  "generatedAt": "2026-10-11T10:35:13.310Z",
+  "module": "web-injection",
+  "totalAlerts": 11,
+  "counts": {
+    "block": 5,
+    "alert": 1,
+    "record": 5
+  },
+  "decisions": [
+    {
+      "alertId": "WZ-0001",
+      "srcAddr": "10.20.1.44",
+      "action": "record",
+      "confidence": 0,
+      "reason": "no-pattern-match"
+    },
+    {
+      "alertId": "WZ-0002",
+      "srcAddr": "10.20.1.44",
+      "action": "record",
+      "confidence": 0,
+      "reason": "no-pattern-match"
+    },
+    {
+      "alertId": "WZ-0003",
+      "srcAddr": "203.0.113.17",
+      "action": "block",
+      "confidence": 0.85,
+      "reason": "sqli-select-from"
+    },
+    {
+      "alertId": "WZ-0004",
+      "srcAddr": "203.0.113.17",
+      "action": "block",
+      "confidence": 0.9,
+      "reason": "sqli-tautology"
+    },
+    {
+      "alertId": "WZ-0005",
+      "srcAddr": "203.0.113.18",
+      "action": "block",
+      "confidence": 0.9,
+      "reason": "xss-script-tag"
+    },
+    {
+      "alertId": "WZ-0006",
+      "srcAddr": "203.0.113.18",
+      "action": "block",
+      "confidence": 0.85,
+      "reason": "path-traversal-repeated"
+    },
+    {
+      "alertId": "WZ-0007",
+      "srcAddr": "10.20.3.9",
+      "action": "record",
+      "confidence": 0,
+      "reason": "no-pattern-match"
+    },
+    {
+      "alertId": "WZ-0008",
+      "srcAddr": "10.20.3.9",
+      "action": "record",
+      "confidence": 0,
+      "reason": "no-pattern-match"
+    },
+    {
+      "alertId": "WZ-0009",
+      "srcAddr": "10.20.3.9",
+      "action": "record",
+      "confidence": 0,
+      "reason": "no-pattern-match"
+    },
+    {
+      "alertId": "WZ-0010",
+      "srcAddr": "10.20.5.21",
+      "action": "alert",
+      "confidence": 0.6,
+      "reason": "sqli-weak-numeric-tautology"
+    },
+    {
+      "alertId": "WZ-0011",
+      "srcAddr": "198.51.100.23",
+      "action": "block",
+      "confidence": 0.9,
+      "reason": "sqli-destructive"
+    }
+  ]
+}

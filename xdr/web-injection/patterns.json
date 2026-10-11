@@ -1,0 +1,78 @@
+{
+  "version": "1.0.0",
+  "basis": "MITRE ATT&CK T1190 (Exploit Public-Facing Application); 참고 사고: CISA AA23-158A, Cl0p/MOVEit SQL 인젝션 CVE-2023-34362",
+  "patterns": [
+    {
+      "id": "sqli-select-from",
+      "name": "SQL SELECT...FROM 구조",
+      "category": "sql-injection",
+      "weight": 0.85,
+      "pattern": "\\bselect\\b[\\s\\S]{0,80}\\bfrom\\b",
+      "flags": "i",
+      "basis": "표준 SQL 조회 구문. 일반 문장에서 'select ... from'이 그대로 나타날 확률은 낮아 오탐이 적음 (OWASP Injection, MITRE T1190)"
+    },
+    {
+      "id": "sqli-tautology",
+      "name": "SQL 항진명제 (OR '1'='1' 류)",
+      "category": "sql-injection",
+      "weight": 0.9,
+      "pattern": "\\bor\\b\\s*['\"]?\\s*\\d+\\s*['\"]?\\s*=\\s*['\"]?\\s*\\d+",
+      "flags": "i",
+      "basis": "로그인/필터 우회에 쓰이는 전형적 SQL 인젝션 서명 (OWASP Top 10 Injection, CISA AA23-158A 사례)"
+    },
+    {
+      "id": "sqli-destructive",
+      "name": "SQL 파괴적 구문 (쿼리 종료 뒤 DROP/DELETE/UPDATE/INSERT)",
+      "category": "sql-injection",
+      "weight": 0.9,
+      "pattern": ";\\s*(drop|delete|update|insert)\\b",
+      "flags": "i",
+      "basis": "쿼리 종료(;) 뒤에 파괴적 명령을 덧붙이는 스태킹 쿼리 패턴. MOVEit(CVE-2023-34362) 악용에 쓰인 기법과 동일 계열"
+    },
+    {
+      "id": "sqli-weak-numeric-tautology",
+      "name": "따옴표 없는 숫자 항진명제 (1=1 류)",
+      "category": "sql-injection",
+      "weight": 0.6,
+      "pattern": "\\b(\\d+)\\s*=\\s*\\1\\b",
+      "flags": "",
+      "basis": "단독으로는 자연어 숫자 비교(수학 설명 등)와 구분이 어려워 신뢰도를 낮게 두되, 사람이 확인하도록 alert로 남김"
+    },
+    {
+      "id": "xss-script-tag",
+      "name": "<script> 태그 삽입",
+      "category": "xss",
+      "weight": 0.9,
+      "pattern": "<\\s*script\\b",
+      "flags": "i",
+      "basis": "반사형/저장형 XSS의 가장 기본적인 서명 (OWASP XSS, MITRE T1190)"
+    },
+    {
+      "id": "xss-event-handler",
+      "name": "인라인 이벤트 핸들러 삽입 (onerror=/onload= 등)",
+      "category": "xss",
+      "weight": 0.85,
+      "pattern": "\\bon(error|load|click|mouseover)\\s*=",
+      "flags": "i",
+      "basis": "태그 필터를 우회하는 대표적 XSS 변형 기법"
+    },
+    {
+      "id": "xss-js-uri",
+      "name": "javascript: URI 스킴",
+      "category": "xss",
+      "weight": 0.8,
+      "pattern": "javascript:\\s*\\S",
+      "flags": "i",
+      "basis": "href/src 속성을 통한 스크립트 실행 우회 기법"
+    },
+    {
+      "id": "path-traversal-repeated",
+      "name": "../ 3회 이상 반복",
+      "category": "path-traversal",
+      "weight": 0.85,
+      "pattern": "(\\.\\./){3,}|(\\.\\.%2f){3,}",
+      "flags": "i",
+      "basis": "단발성 상대경로(../images/..)는 정상 웹에서도 흔하지만, 3회 이상 반복은 상위 디렉터리 전체를 거슬러 올라가려는 명백한 시도"
+    }
+  ]
+}
