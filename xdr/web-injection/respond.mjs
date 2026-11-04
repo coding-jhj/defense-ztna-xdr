@@ -13,6 +13,8 @@ export async function respond(alert, decision) {
 
   if (decision.action === 'block') {
     const rulesFile = JSON.parse(await readFile(DENY_RULES_PATH, 'utf8'));
+    // 같은 경보로 이미 만든 규칙은 최신 판정으로 교체해, 다시 실행해도 규칙이 중복 누적되지 않게 함
+    rulesFile.rules = rulesFile.rules.filter((rule) => rule.basedOnAlertId !== alert.id);
     rulesFile.rules.push({
       id: `deny-${alert.id}`,
       srcAddr: alert.srcAddr,
