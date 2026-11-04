@@ -2,6 +2,10 @@
 
 ZTNA(제로 트러스트 네트워크 접근) 판정기와, 웹 주입 공격을 탐지해 판정기에 차단 규칙을 넘겨주는 XDR 탐지 모듈 실습 프로젝트입니다.
 
+## 관련 저장소
+
+ZTNA 판정기(`decide`)·탐지기(`detect`), 로그인·소유자 검사, 백업 복구, 증거 기반 재시험은 [choi-bujang-secret-vault (BYTE BACK)](https://github.com/coding-jhj/choi-bujang-secret-vault)에 있습니다. 이 저장소는 같은 방어전 과정의 XDR 보너스 단계에서 만든 웹 주입 탐지 모듈과, 그 결과로 만드는 차단 규칙 저장소를 따로 공개한 것입니다.
+
 ## 배경: 왜 이 모듈을 만드는가
 
 2023년 Cl0p 랜섬웨어 조직은 파일 전송 소프트웨어 **MOVEit Transfer**의 제로데이 SQL 인젝션 취약점(**CVE-2023-34362**)을 악용해 **LEMURLOOT** 웹셸을 심고, 전 세계 수많은 기관의 데이터베이스에서 대량으로 데이터를 빼냈습니다. ([CISA AA23-158A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-158a))
@@ -53,3 +57,5 @@ npm run xdr:run -- web-injection
 - **정상 이벤트 5건은 전부 `record`, 오탐 0건**: 로그인(`user=...&password=...`), `select your favorite color`(SQL 키워드지만 구조 아님), `subscription_script_v2.pdf`(script라는 글자만 포함), `../images/logo.png`(상대경로 1회만)처럼 **의도적으로 오탐을 유발하기 쉬운 정상 트래픽**을 섞어 넣고도 전부 정상 처리됨을 확인했습니다.
 
 전체 결과는 `xdr/web-injection/result.json`에서 확인할 수 있습니다.
+
+같은 경보로 이미 만든 차단 규칙은 다시 실행할 때 최신 판정으로 교체되므로, 여러 번 실행해도 `xdr/ztna/deny-rules.json`에 규칙이 중복으로 쌓이지 않습니다.
